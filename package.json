@@ -1,0 +1,22 @@
+{
+  "name": "veft-assignment8",
+  "version": "1.0.0",
+  "description": "punchcard api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kotkarl/VEFT-Assignment8.git"
+  },
+  "author": "Hrafnkell Baldursson, Rannveig Guðmundsdottir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kotkarl/VEFT-Assignment8/issues"
+  },
+  "homepage": "https://github.com/kotkarl/VEFT-Assignment8#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
