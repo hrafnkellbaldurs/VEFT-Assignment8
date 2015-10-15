@@ -13,20 +13,23 @@ app.use(bodyParser.json());
 /* HELPER FUNCTIONS */
 
 /* COMPANY */
+
+/* Gets a list of all registered companies */
 app.get('/api/company', (req, res) => {
-  db.getCompanies((err, dbres) => {
+  db.getCompanies({}, (err, dbres) => {
     if(err) {
       return res.send('ERROR: ' + err);
     }
-    console.log(dbres);
     res.json(dbres);
   });
 });
 
+/* Gets a single company with the given id */
 app.get('/api/company/:id', (req, res) => {
   res.send('GET company id');
 });
 
+/* Registers a company */
 app.post('/api/company', (req, res) => {
   const data = req.body;
   db.addCompany(data, (err, dbres) => {
@@ -38,15 +41,20 @@ app.post('/api/company', (req, res) => {
 });
 
 /* USER */
+
+/* Gets a list of all registered users */
 app.get('/api/user', (req, res) => {
   res.send('GET users');
 });
 
 /* PUNCHCARD */
+
+/* Creates a new punch card for the company with the given company_id */
 app.post('/api/punchcard/:company_id', (req, res) => {
   res.send('POST punchcard');
 });
 
+/* This Web API listens to port 4000 */
 app.listen(port, () => {
   console.log('Server is on port ', port);
 });

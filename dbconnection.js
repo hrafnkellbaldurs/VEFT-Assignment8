@@ -1,7 +1,7 @@
 'use strict';
 
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/myapp';
+const url = 'mongodb://localhost:27017/app';
 const addCompany = (company, cb) => {
   MongoClient.connect(url, (err, db) => {
     if(err) {
@@ -23,7 +23,7 @@ const addCompany = (company, cb) => {
   });
 };
 
-const getCompanies = (cb) => {
+const getCompanies = (filter, cb) => {
   MongoClient.connect(url, (err, db) => {
     if(err) {
       cb(err);
@@ -31,14 +31,16 @@ const getCompanies = (cb) => {
       return;
     }
     const companies = db.collection('companies');
-    companies.find().toArray((ferr, docs) => {
+    companies.find(filter, (ferr, docs) => {
       if(ferr) {
         cb(ferr);
         db.close();
         return;
       }
-      console.log(docs);
-      cb(null, docs);
+      docs.toArray((derr, d) => {
+        cb(derr, d);
+        db.close();
+      });
     });
   });
 };
@@ -47,3 +49,14 @@ module.exports = {
   addCompany: addCompany,
   getCompanies: getCompanies,
 };
+
+/*
+companies.find().toArray((ferr, docs) => {
+  if(ferr) {
+    cb(ferr);
+    db.close();
+    return;
+  }
+  console.log(docs);
+  cb(null, docs);
+});*/
