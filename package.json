@@ -18,7 +18,9 @@
   "homepage": "https://github.com/kotkarl/VEFT-Assignment8#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "node-uuid": "^1.4.3"
   },
   "devDependencies": {
     "eslint": "^1.6.0"
