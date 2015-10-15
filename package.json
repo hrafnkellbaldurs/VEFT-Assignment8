@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/kotkarl/VEFT-Assignment8#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "eslint": "^1.6.0"
   }
 }
