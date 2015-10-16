@@ -49,14 +49,3 @@ module.exports = {
   addCompany: addCompany,
   getCompanies: getCompanies,
 };
-
-/*
-companies.find().toArray((ferr, docs) => {
-  if(ferr) {
-    cb(ferr);
-    db.close();
-    return;
-  }
-  console.log(docs);
-  cb(null, docs);
-});*/

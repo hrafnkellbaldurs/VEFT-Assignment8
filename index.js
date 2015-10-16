@@ -7,10 +7,25 @@ const uuid = require('node-uuid');
 const db = require('./dbconnection');
 const _ = require('lodash');
 const app = express();
+const ObjectID = require('mongodb').ObjectID;
 
 app.use(bodyParser.json());
 
 /* HELPER FUNCTIONS */
+
+const getCompanyById = (id, cb) => {
+  db.getCompanies({'_id': new ObjectID(id)}, (err, res) => {
+    if(err) {
+      cb(err);
+      return;
+    }
+    if(res.length === 0) {
+      cb(null, null);
+      return;
+    }
+    cb(null, res);
+  });
+};
 
 /* COMPANY */
 
@@ -26,7 +41,16 @@ app.get('/api/company', (req, res) => {
 
 /* Gets a single company with the given id */
 app.get('/api/company/:id', (req, res) => {
-  res.send('GET company id');
+  const id = req.params.id;
+  getCompanyById(id, (err, company) => {
+    if(err) {
+      return res.status(500).send('Internal server error');
+    }
+    if(company === null) {
+      return res.status(404).send('Company not found');
+    }
+    res.json(company);
+  });
 });
 
 /* Registers a company */
@@ -36,7 +60,7 @@ app.post('/api/company', (req, res) => {
     if(err) {
       return res.send('ERROR: ' + err);
     }
-    res.status(201).send(dbres);
+    res.status(201).send(dbres.ops);
   });
 });
 
