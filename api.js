@@ -172,9 +172,9 @@ app.post('/punchcard/:company_id', bodyParser.json(), (req, res) => {
     }
     // Validate the company ID
     const companyId = req.params.company_id;
-    validateId(companyId, (msg) => {
-      if(msg) {
-        return res.status(412).send(msg);
+    validateId(companyId, (err) => {
+      if(err) {
+        return res.status(412).send(err);
       }
       // Check if the company exists
       models.Company.findOne({'_id': companyId}, (err, company) => {
