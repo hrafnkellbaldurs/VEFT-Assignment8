@@ -120,7 +120,7 @@
     "no-delete-var": 1,
     "no-label-var": 1,
     "no-shadow-restricted-names": 1,
-    "no-shadow": 1,
+    "no-shadow": 0,
     "no-undef-init": 1,
     "no-undef": 1,
     "no-undefined": 0,
@@ -139,7 +139,7 @@
     /* Stylistic Issues */
     "array-bracket-spacing": [1, "never"],
     "brace-style": [1, "stroustrup", { "allowSingleLine": true }],
-    "camelcase": [1, { "properties": "always" }],
+    "camelcase": [0, { "properties": "always" }],
     "comma-spacing": [1, { "before": false, "after": true }],
     "comma-style": [1, "last"],
     "computed-property-spacing": 0,
