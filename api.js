@@ -150,7 +150,7 @@ app.post('/user', bodyParser.json(), (req, res) => {
     if(err) {
       return handleValidationError(err, res);
     }
-    // Return the company ID to the client
+    // Return the user to the client
     res.status(201).json(user);
   });
 });
