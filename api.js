@@ -160,7 +160,6 @@ app.post('/user', bodyParser.json(), (req, res) => {
 /* Creates a new punch card for the company with the given company_id */
 app.post('/punchcard/:company_id', bodyParser.json(), (req, res) => {
   const userToken = req.headers.token;
-  console.log(userToken);
 
   // Validate the token
   models.User.findOne({'token': userToken}, (err, user) => {
